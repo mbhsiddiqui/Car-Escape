@@ -2,10 +2,11 @@ import math
 import random
 
 class Map:
-    
+
     def __init__(self, row, column):
                 self.row = row
                 self.column = column
+                path = ""
     def getPath(self, startRow, startCol, destRow, destCol): # getPath method
         if (startRow < 0 or startRow > self.row or startCol < 0 or startCol > self.column or destRow < 0 or destRow > self.row or destCol < 0 or destCol > self.column):
             raise ValueError("IllegalArgumentException")
@@ -114,7 +115,7 @@ class Map:
         else:
             path = path + self.goNorthEast(startRow, startCol, destRow, destCol)
     def findPath(self, t, checker):
-        if checker == False:   
+        if checker == False:
             global path
             path = []
             global s
@@ -125,7 +126,7 @@ class Map:
             while not (x==0 or y==0 or y==self.row or x==self.column):
                 self.findPath(path[len(path)-1], True)
                 y,x = path[len(path)-1]
-            
+
             print("Car got out of the city")
             return path
         else:
